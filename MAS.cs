@@ -22,7 +22,7 @@ namespace MAS
         {
             InitializeComponent();
             Scene = new Workshop();
-            //MessageBox.Show("Dynamic button is clicked"); Yeah Yeah
+            //MessageBox.Show("Dynamic button is clicked"); Yeah Yeah Yeah
         }
 
         public MAS(Room curRoom)
