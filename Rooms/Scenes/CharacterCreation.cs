@@ -8,13 +8,13 @@ namespace MAS.Rooms.Scenes
 {
     class CharacterCreation : Room
     {
-        public bool[] buttonToggle = { false, false, false, false, false, false, true };
         public CharacterCreation()
         {
-            this.roomName = "Somewhere";
+            this.RoomName = "Somewhere";
             this.description = "You awaken in a stange place...";
             
-            
         }
+
+
     }
 }

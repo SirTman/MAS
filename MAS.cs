@@ -16,89 +16,68 @@ namespace MAS
 {
     public partial class MAS : Form
     {
-        Room Scene;
+        private Room scene;
+        public Room Scene
+        {
+            get { return scene; }
+            set
+            {
+                scene = value;
+                CurLocation.Text = scene.location();
+                TBMainTextWin.Text = scene.readDesc();
+
+                for (int i = 0; i < scene.buttonlist.Count; i++)
+                {
+                    ActionBar.Controls.Add(scene.buttonlist[i]);
+                }
+            }
+        }
 
         public MAS()
         {
             InitializeComponent();
-            Scene = new Workshop();
-            //MessageBox.Show("Dynamic button is clicked"); Yeah Yeah Yeah
         }
 
-        public MAS(Room curRoom)
+        public void scDialog(string dia)
         {
-            InitializeComponent();
-            Scene = curRoom;
+            TBMainTextWin.Text = dia;
         }
 
-        public void nextButton()
+        public void clrButtons()
         {
-            Button NextButton = addButton("   Next >>");
-            ActionBar.Controls.Add(NextButton);
-            NextButton.Click += new EventHandler(next_Click);
+            ActionBar.Controls.Clear();
         }
-
-        public void backButton()
+        //Single Button
+        public void addButtons(Button but)
+        {   ActionBar.Controls.Add(but);    }
+        public void setButtons(Button but)
         {
-            Button BackButton = addButton("<< Back   ");
-            ActionBar.Controls.Add(BackButton);
-            BackButton.Click += new EventHandler(next_Click);
+            clrButtons();
+            ActionBar.Controls.Add(but);
+            
         }
-
-        public void travelButton(string location)
+        //Multi buttons
+        public void addButtons(List<Button> but)
         {
-            Button TravelButton = addButton(location);
-            ActionBar.Controls.Add(TravelButton);
-            TravelButton.Click += new EventHandler(travel_Click);
-        }
-
-        public Button addButton(string bText)
-        {
-            Button newButton = new Button();
-            //newButton.Font = new System.Drawing.Font("PF Ronda Seven", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            newButton.Size = new System.Drawing.Size(132, 50);
-            newButton.TabIndex = 7;
-            newButton.Text = bText;
-            newButton.UseVisualStyleBackColor = true;
-            return newButton;
-        }
-
-        public void SetScene(Room desc)
-        {
-            CurLocation.Text = "LOCATION: " + desc.location();
-            TBMainTextWin.Text = desc.readDesc();
-            //for (int i = 0; i < desc.buttomToggle.Length; i++)
-            //{
-            //  bt1.Visible = desc.buttomToggle[i];
-            //}
-
-            for (int i = 0; i < desc.buttonlist.Count; i++)
+            for (int i = 0; i < scene.buttonlist.Count; i++)
             {
-                travelButton(desc.buttonlist[i]);
+                ActionBar.Controls.Add(but[i]);
+            }
+        }
+        public void setButtons(List<Button> but)
+        {
+            clrButtons();
+            for (int i = 0; i < scene.buttonlist.Count; i++)
+            {
+                ActionBar.Controls.Add(but[i]);
             }
         }
 
         private void MAS_Load(object sender, EventArgs e)
         {
-            //nextButton();
-            //backButton();
-            //Scene = new CharacterCreation();
-            SetScene(Scene);
-
-
+            //SetScene(Scene);
+            Scene = new Workshop(this);
         }
 
-        private void next_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private void travel_Click(object sender, EventArgs e)
-        {
-            var button = (Button)sender;
-            MessageBox.Show(button.Text); 
-
-        }
     }
 }
