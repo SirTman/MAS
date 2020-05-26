@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace MAS.Character
 {
-    class Character
+    public abstract class Character
     {
-        protected string name;
-        protected string species;
-        Sex gender;
-
-        enum Sex
-        {
-            male,
-            female,
-            andromorph,
-            gynomorphy,
-            herm,
-            maleherm
-        }
-        private Face face;
-        private Body body;
+        public string name;
+        public string species;
+        protected Sex gender;
+        //protected enum Sex
+        //{
+        //    male,
+        //    female,
+        //    andromorph,
+        //    gynomorphy,
+        //    herm,
+        //    maleherm,
+        //    undefined
+        //}
+        public Face face = new Face();
+        public Body body = new Body();
 
 
         //Core Stats
@@ -36,15 +36,42 @@ namespace MAS.Character
         private double stsen = 1.0;   //Senstivity Multiplyer x0.0
 
         private double lust;    //Lust 
-        private double lustMax; //Lust Maximun DFLT: 100
+        private double lustMax = 100.0; //Lust Maximun DFLT: 100
 
         private double hp;      //Hit Points
-        private double hpMax;   //Hit Points Maximun
+        private double hpMax = 100.0;   //Hit Points Maximun
 
-        Character()
+        public string getGender()
         {
-            this.lustMax = 100.0;
-            this.hpMax = 100.0;
+            string t;
+
+            switch (gender) {
+                case Sex.male:
+                    t = "male";
+                    break;
+                case Sex.female:
+                    t = "female";
+                    break;
+                case Sex.andromorph:
+                    t = "andromorph";
+                    break;
+                case Sex.gynomorphy:
+                    t = "gynomorphy";
+                    break;
+                case Sex.herm:
+                    t = "herm";
+                    break;
+                case Sex.maleherm:
+                    t = "maleherm";
+                    break;
+                case Sex.undefined:
+                    t = "unknown";
+                    break;
+                default:
+                    t = "unknown";
+                    break;
+            }
+            return t;
         }
     }
 }

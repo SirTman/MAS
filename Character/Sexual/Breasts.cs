@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAS.Character.Sexual
+namespace MAS.Character
 {
-    class Breasts
+    public class Breasts
     {
-        int rating;
+        //private int Rating {
+        //    set => Rating = (int)cupSize;
+        //    get => Rating;
+        //}
         BreastCup cupSize;
         enum BreastCup
         {
@@ -58,16 +61,40 @@ namespace MAS.Character.Sexual
             MMM,
             MMM_LARGE,
         }
+        
 
-        int breastNum;
-        int nipNum; //Nipple Per Breast
-        double nipLength;
 
-        double lactation;
+        private int breastNum = 2;
+        private int nipNum = 1; ///Nipple Per Breast
+        private double nipLength = 5.1; ///cm
 
-        string nipColour;
-        string nipPier;
-        Boolean pussyNips = false;
+        private double lactation = 0.0; ///x0.0
 
+        private string nipColour = "pink";
+        private string nipPier;
+        private bool pussyNips = false; ///Can be fucked
+
+        public Breasts()
+        {
+            this.cupSize = BreastCup.A;
+        }
+        public Breasts(int size)
+        {
+            this.cupSize = (BreastCup)size;
+        }
+
+        public void changeSize(int Size)
+        {
+            int intialSize = (int)this.cupSize;
+            intialSize += Size;
+            if (intialSize < 0) intialSize = 0;
+
+            this.cupSize = (BreastCup)intialSize;
+        }
+
+        public void SetSize(int Size)
+        {
+            this.cupSize = (BreastCup)Size;
+        }
     }
 }

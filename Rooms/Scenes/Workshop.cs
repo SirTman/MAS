@@ -22,7 +22,7 @@ namespace MAS.Rooms.Scenes
 
         }
 
-        private void next_Click(object sender, EventArgs e)
+        private void return_Click(object sender, EventArgs e)
         {
             //var button = (Button)sender;
             //MessageBox.Show(button.Text); #DEBUG
@@ -34,11 +34,14 @@ namespace MAS.Rooms.Scenes
 
         private void na_Click(object sender, EventArgs e)
         {
-            MainForm.setButtons(nextButton(next_Click));
+            MainForm.setButtons(nextButton(return_Click));
             MainForm.scDialog("Seems closed at the moment");
             //MainForm.scDialog(description);
         }
 
-
+        protected override string Book()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

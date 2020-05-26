@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAS.Character.Sexual
+namespace MAS.Character
 {
-    class Hole
+    public class Hole
     {
         double capacity;
         private bool isWet = false;
@@ -28,7 +28,7 @@ namespace MAS.Character.Sexual
         }
     }
 
-    class Vagina : Hole
+    public class Vagina : Hole
     {
         private string vagType;
         double clitLen;

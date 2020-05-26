@@ -49,9 +49,11 @@
     <Compile Include="Character\Body.cs" />
     <Compile Include="Character\Character.cs" />
     <Compile Include="Character\Face.cs" />
+    <Compile Include="Character\PC\Player.cs" />
     <Compile Include="Character\Sexual\Breasts.cs" />
     <Compile Include="Character\Sexual\Penis.cs" />
     <Compile Include="Character\Sexual\Hole.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="MAS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Character\NPC\" />
-    <Folder Include="Character\PC\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

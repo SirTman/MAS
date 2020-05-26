@@ -4,25 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAS.Character.Sexual
+namespace MAS.Character
 {
-    class Penis
+    public class Penis
     {
         string cockType;
-        double length;
-        double thickness;
+        double length;//cm
+        double thickness;//cm
         bool knot = false;
         double knotMULT; //x0.0
 
         string cockPier;
 
-        Penis(string type, double len, double thi) {
+        public Penis()
+        {
+            this.cockType = "human";
+            this.length = 20.0;
+            this.thickness = 5.1;
+        }
+
+        public Penis(string type, double len, double thi) {
             this.cockType = type;
             this.length = len;
             this.thickness = thi;
         }
 
-        Penis(string type, double len, double thi, bool knot)
+        public Penis(string type, double len, double thi, bool knot)
         {
             this.cockType = type;
             this.length = len;
@@ -31,7 +38,7 @@ namespace MAS.Character.Sexual
             this.knotMULT = 1.0;
         }
 
-        Penis(string type, double len, double thi, bool knot, double mult)
+        public Penis(string type, double len, double thi, bool knot, double mult)
         {
             this.cockType = type;
             this.length = len;
