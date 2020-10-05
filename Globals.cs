@@ -30,9 +30,14 @@ namespace MAS
         undefined
     }
 
+    public enum Stat
+    {
+        STR, RFX, CON, CUN, PRE, INT
+    }
+
     public static class Globals
     {
-        public const int bw = 100;
+        public const int bw = 111;
         public const int bh = 50;
 
         public static StartingRace PC_OriginalRace;

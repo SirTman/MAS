@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.TBMainTextWin = new System.Windows.Forms.RichTextBox();
             this.CurLocation = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.statBox = new System.Windows.Forms.GroupBox();
             this.IntScore = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.PreScore = new System.Windows.Forms.Label();
@@ -45,8 +45,6 @@
             this.StrScore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ActionBar = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -56,6 +54,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ActionBar.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,16 +84,16 @@
             this.CurLocation.TabIndex = 3;
             this.CurLocation.Text = "LOCATION: ???";
             // 
-            // groupBox2
+            // statBox
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Font = new System.Drawing.Font("PF Ronda Seven", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 46);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(152, 513);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Stats";
+            this.statBox.BackColor = System.Drawing.SystemColors.Control;
+            this.statBox.Font = new System.Drawing.Font("PF Ronda Seven", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statBox.Location = new System.Drawing.Point(12, 46);
+            this.statBox.Name = "statBox";
+            this.statBox.Size = new System.Drawing.Size(152, 513);
+            this.statBox.TabIndex = 4;
+            this.statBox.TabStop = false;
+            this.statBox.Text = "Stats";
             // 
             // IntScore
             // 
@@ -104,6 +104,7 @@
             this.IntScore.Size = new System.Drawing.Size(65, 24);
             this.IntScore.TabIndex = 11;
             this.IntScore.Text = "?? (+?)";
+            this.IntScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
             // 
@@ -124,6 +125,7 @@
             this.PreScore.Size = new System.Drawing.Size(65, 24);
             this.PreScore.TabIndex = 10;
             this.PreScore.Text = "?? (+?)";
+            this.PreScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label5
             // 
@@ -144,6 +146,7 @@
             this.CunScore.Size = new System.Drawing.Size(65, 24);
             this.CunScore.TabIndex = 9;
             this.CunScore.Text = "?? (+?)";
+            this.CunScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
@@ -164,6 +167,7 @@
             this.ConScore.Size = new System.Drawing.Size(65, 24);
             this.ConScore.TabIndex = 8;
             this.ConScore.Text = "?? (+?)";
+            this.ConScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
             // 
@@ -184,6 +188,7 @@
             this.RfxScore.Size = new System.Drawing.Size(65, 24);
             this.RfxScore.TabIndex = 7;
             this.RfxScore.Text = "?? (+?)";
+            this.RfxScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label2
             // 
@@ -204,6 +209,7 @@
             this.StrScore.Size = new System.Drawing.Size(65, 24);
             this.StrScore.TabIndex = 6;
             this.StrScore.Text = "?? (+?)";
+            this.StrScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label1
             // 
@@ -231,42 +237,7 @@
             this.ActionBar.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.ActionBar.Size = new System.Drawing.Size(1054, 84);
             this.ActionBar.TabIndex = 5;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.IntScore, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.PreScore, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.CunScore, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ConScore, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.RfxScore, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.StrScore, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 87);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(152, 245);
-            this.tableLayoutPanel1.TabIndex = 6;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.ActionBar.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.ActionBar_ControlAdded);
             // 
             // button1
             // 
@@ -361,6 +332,42 @@
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.IntScore, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.PreScore, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.CunScore, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ConScore, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.RfxScore, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.StrScore, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 87);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(152, 245);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // MAS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -368,7 +375,7 @@
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.ActionBar);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.statBox);
             this.Controls.Add(this.CurLocation);
             this.Controls.Add(this.TBMainTextWin);
             this.Name = "MAS";
@@ -386,7 +393,6 @@
         #endregion
         public System.Windows.Forms.RichTextBox TBMainTextWin;
         private System.Windows.Forms.Label CurLocation;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -411,6 +417,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        public System.Windows.Forms.GroupBox statBox;
     }
 }
 

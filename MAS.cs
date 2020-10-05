@@ -43,7 +43,6 @@ namespace MAS
         {
             InitializeComponent();
         }
-        
         //==================================================================================
         public void scDialog(string dia)
         {
@@ -94,6 +93,22 @@ namespace MAS
             }
         }
 
+        public void actionBarBreak(Control control, bool value)
+        {
+            ActionBar.SetFlowBreak(control, value);
+        }
+
+        public void updateStats()
+        {
+            string format = "+0;-#;";
+            StrScore.Text = pc.getAbilityScore(Stat.STR) + " (" + pc.calModifier(pc.getAbilityScore(Stat.STR)).ToString(format) + ")";
+            RfxScore.Text = pc.getAbilityScore(Stat.RFX) + " (" + pc.calModifier(pc.getAbilityScore(Stat.RFX)).ToString(format) + ")";
+            ConScore.Text = pc.getAbilityScore(Stat.CON) + " (" + pc.calModifier(pc.getAbilityScore(Stat.CON)).ToString(format) + ")";
+            CunScore.Text = pc.getAbilityScore(Stat.CUN) + " (" + pc.calModifier(pc.getAbilityScore(Stat.CUN)).ToString(format) + ")";
+            PreScore.Text = pc.getAbilityScore(Stat.PRE) + " (" + pc.calModifier(pc.getAbilityScore(Stat.PRE)).ToString(format) + ")";
+            IntScore.Text = pc.getAbilityScore(Stat.INT) + " (" + pc.calModifier(pc.getAbilityScore(Stat.INT)).ToString(format) + ")";
+        }
+
         //public string nameFieldgen()
         //{
         //    clrButtons();
@@ -121,11 +136,20 @@ namespace MAS
 
         //START
         //==================================================================================
+        public void returnToWorkshop(object sender, EventArgs e)
+        {
+            Scene = new Workshop(this);
+        }
+
         private void MAS_Load(object sender, EventArgs e)
         {
             //SetScene(Scene);
             Scene = new CharacterCreation(this);
         }
 
+        private void ActionBar_ControlAdded(object sender, ControlEventArgs e)
+        {
+
+        }
     }
 }

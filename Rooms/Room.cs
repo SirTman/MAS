@@ -43,6 +43,22 @@ namespace MAS.Rooms
             newButton.Click += eh;
             return newButton;
         }
+        public Button addButton(string NameTxt, EventHandler eh, string ToolTipText)
+        {
+            Button newButton = new Button();
+            //newButton.Font = new System.Drawing.Font("PF Ronda Seven", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            newButton.Size = new Size(Globals.bw, Globals.bh);
+            newButton.TabIndex = 7;
+            newButton.Name = NameTxt;
+            newButton.Text = NameTxt;
+            newButton.UseVisualStyleBackColor = true;
+            newButton.Click += eh;
+
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(newButton, ToolTipText);
+
+            return newButton;
+        }
         public Button addButton(string NameTxt, EventHandler eh)
         {
             Button newButton = new Button();
@@ -54,6 +70,43 @@ namespace MAS.Rooms
             newButton.UseVisualStyleBackColor = true;
             newButton.Click += eh;
             
+            return newButton;
+        }
+
+        public Button statUpButton(string NameTxt, EventHandler eh, int ablNum)
+        {
+            Button newButton = new Button();
+            newButton.Size = new Size(Globals.bw/2, Globals.bh/2);
+            newButton.TabIndex = 7;
+            newButton.Name = ablNum.ToString();
+            newButton.Text = "(" + NameTxt + ") +";
+            newButton.UseVisualStyleBackColor = true;
+            newButton.Click += eh;
+
+            return newButton;
+        }
+        public Button statDownButton(string NameTxt, EventHandler eh, int ablNum)
+        {
+            Button newButton = new Button();
+            newButton.Size = new Size(Globals.bw/2, Globals.bh/2);
+            newButton.TabIndex = 7;
+            newButton.Name = ablNum.ToString();
+            newButton.Text = "("+ NameTxt + ") -";
+            newButton.UseVisualStyleBackColor = true;
+            newButton.Click += eh;
+
+            return newButton;
+        }
+
+        public Button finishSatsButton(EventHandler eh)
+        {
+            Button newButton = new Button();
+            newButton.Size = new Size(Globals.bw, Globals.bh / 2);
+            newButton.TabIndex = 7;
+            newButton.Text = "Finished";
+            newButton.UseVisualStyleBackColor = true;
+            newButton.Click += eh;
+
             return newButton;
         }
 
@@ -113,6 +166,10 @@ namespace MAS.Rooms
             MainForm.scDialog(Book());
         }
 
+        protected void pushDescription() {
+            MainForm.scDialog(description);
+        }
+
         public List<Button> buttons()
         {
             return buttonlist;
@@ -137,5 +194,27 @@ namespace MAS.Rooms
 
             return NameInput;
         }
+        //Function Return
+        public TextBox nameField(EventHandler eh)
+        {
+            MainForm.clrButtons();
+
+            TextBox NameInput = new TextBox()
+            {
+                Name = "NameInput",
+                TabIndex = 9,
+                Size = new Size(500, Globals.bh),
+                Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)))
+            };
+
+            MainForm.abAdd(NameInput);
+            Button newButton = new Button() { Size = new Size(Globals.bw, Globals.bh), TabIndex = 7, Name = "OK", Text = "Ok", UseVisualStyleBackColor = true };
+            newButton.Click += new EventHandler(eh);
+            MainForm.abAdd(newButton);
+
+            return NameInput;
+        }
+
+        
     }
 }
