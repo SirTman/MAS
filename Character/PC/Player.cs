@@ -11,7 +11,7 @@ namespace MAS.Character.PC
     {
         public Player(string Pname,bool isMale)
         {
-            this.name = Pname;
+            this._name = Pname;
             this.gender = isMale ? Sex.male : Sex.female;
             Globals.PC_OrginalGender = this.gender;
             switch (gender)
@@ -37,7 +37,7 @@ namespace MAS.Character.PC
 
         public void setStartSpecies(StartingRace race)
         {
-            this.species = race.ToString();
+            this.Species = race.ToString();
             switch (race)
             {
                 case StartingRace.Human:
@@ -65,16 +65,20 @@ namespace MAS.Character.PC
         }
         public void setSpecies(StartingRace race)
         {
-            this.species = race.ToString();
+            this.Species = race.ToString();
         }
         public void setSpecies(string race)
         {
-            this.species = race.ToString();
+            this.Species = race.ToString();
         }
 
         public void setThickness(int Num)
         {
             
+        }
+
+        public void sleep() {
+            this.HP = this.HPmax;
         }
     }
 }

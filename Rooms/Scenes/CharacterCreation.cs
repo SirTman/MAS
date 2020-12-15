@@ -19,8 +19,11 @@ namespace MAS.Rooms.Scenes
         private int[] statsPoints = { 0, 0, 0, 0, 0, 0 };
         private int[] racialBonus = { 0, 0, 0, 0, 0, 0 };
 
+        bool DEBUG_SkipCreation = true;
+
         public CharacterCreation(MAS mAS)
         {
+         
             this.RoomName = "Registration Office";
             this.description = "You find yourself on the Planet of Capus B27 a wasteland ball of dust in a remote system of the galexy. " +
                 "One of the only noticable things on this rock is Trash Town, a city build up of refuse and scrap discared from a warzone long ago" +
@@ -30,8 +33,42 @@ namespace MAS.Rooms.Scenes
                 "You for whatever reason have decided to join this bloodsport, you find yourself standing in a line nearly at the Admin desk";
             this.MainForm = mAS;
             MainForm.abRight();
-            MainForm.setButtons(nextButton(sc_name));
-            //MainForm.setButtons(nextButton());
+            
+            //DEBUG START
+            if (DEBUG_SkipCreation)
+            {
+                playerName = "alex";
+                isMale = false;
+                this.pc = new Player(playerName, isMale);
+
+                Globals.setStartingRace(StartingRace.Cow);
+                racialBonus[0] += 4; //STR
+                racialBonus[2] += 4; //CON
+                racialBonus[5] -= 2; //INT
+                pc.setSpecies(Globals.PC_OriginalRace);
+
+                pc.setThickness(50);//Thickness
+
+                pc.setAbilityScore((Stat)0, 14 + racialBonus[0]);
+                pc.setAbilityScore((Stat)1, 10 + racialBonus[1]);
+                pc.setAbilityScore((Stat)2, 14 + racialBonus[2]);
+                pc.setAbilityScore((Stat)3, 10 + racialBonus[3]);
+                pc.setAbilityScore((Stat)4, 10 + racialBonus[4]);
+                pc.setAbilityScore((Stat)5, 10 + racialBonus[5]);
+                
+                MainForm.pc = this.pc;
+                MainForm.updateStats();
+                MainForm.pc.sleep();
+                MainForm.updateHP();
+                
+                sc_assets();
+            }
+            //NORMAL START
+            else
+            {
+                MainForm.setButtons(nextButton(sc_name));
+                //MainForm.setButtons(nextButton());
+            }
         }
 
         protected override string Book()
@@ -102,12 +139,15 @@ namespace MAS.Rooms.Scenes
         //Gender
         private void sc_gender(object sender, EventArgs e)
         {
-            playerName = tmName.Text;
-            this.description = string.Format("Ah, so your name is {0}, cute dear.\n" +
-                        "So tell me {0} are you a Man or a Woman?", playerName);
-            MainForm.setButtons(addButton("Male", gender_Click));
-            MainForm.addButtons(addButton("Female", gender_Click, "Makes you female"));
-            pushDescription();
+            if (!string.IsNullOrEmpty(tmName.Text))
+            {
+                playerName = tmName.Text;
+                this.description = string.Format("Ah, so your name is {0}, cute dear.\n" +
+                            "So tell me {0} are you a Man or a Woman?", playerName);
+                MainForm.setButtons(addButton("Male", gender_Click));
+                MainForm.addButtons(addButton("Female", gender_Click, "Makes you female"));
+                pushDescription();
+            }
         }
 
         private void gender_Click(object sender, EventArgs e)
@@ -196,7 +236,7 @@ namespace MAS.Rooms.Scenes
             MainForm.setButtons(buttonlist);
 
             this.description = string.Format("Oh, so you are a {1}, {0}.\n" +
-                "As for your size class would you describe yourself as...?", pc.name, pc.getGender());
+                "As for your size class would you describe yourself as...?", pc.Name, pc.getGender());
             pushDescription();
         }
 
@@ -405,7 +445,10 @@ namespace MAS.Rooms.Scenes
             {
                 pc.setAbilityScore((Stat)i, (baseStatsTotals[i] + statsPoints[i] + racialBonus[i]));
             }
+            MainForm.pc = this.pc;
             MainForm.updateStats();
+            MainForm.pc.sleep();
+            MainForm.updateHP();
             sc_assets();
         }
 

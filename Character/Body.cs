@@ -72,7 +72,7 @@ namespace MAS.Character
 
         public Body()
         {
-            this.boobs.Add(new Breasts());//Everyone has an ass.
+            this.boobs.Add(new Breasts());//Everyone has one chest.
             this.butt.Add(new Hole());//Everyone has an ass.
         }
 

@@ -8,44 +8,67 @@ namespace MAS.Character
 {
     public abstract class Character
     {
-        public string name;
-        public string species;
+        protected string _name;
+        public string Name { get; }
+        private string _species;
+        public string Species { get; set; }
         protected Sex gender;
-        //protected enum Sex
-        //{
-        //    male,
-        //    female,
-        //    andromorph,
-        //    gynomorphy,
-        //    herm,
-        //    maleherm,
-        //    undefined
-        //}
+
         public Face face = new Face();
         public Body body = new Body();
 
-
         //Core Stats
         private static int baseStat = 10;
+        private int
+            _strengthScore,     //Strength, 
+            _reflexScore,       //Reflex, 
+            _constitutionScore, //Constitution, 
+            _cunningScore,      //Cunning, 
+            _presenceScore,     //Presence, 
+            _IntellectScore;    //Intellect
+        protected int StrengthScore { set; get; }
+        protected int ReflexScore { set; get; }
+        protected int ConstitutionScore { set; get; }
+        protected int CunningScore { set; get; }
+        protected int PresenceScore { set; get; }
+        protected int IntellectScore { set; get; }
 
-        protected int 
-            STR = baseStat, 
-            RFX = baseStat, 
-            CON = baseStat, 
-            CUN = baseStat, 
-            PRE = baseStat, 
-            INT = baseStat; //Strength, Reflex, Constitution, Cunning, Presence, Intellect
-        private int[] stats = { baseStat, baseStat, baseStat, baseStat, baseStat};
+        private int statModifier(int score)
+        {
+            double scoreD = score;
+            score = Convert.ToInt32(Math.Floor((scoreD - 10) / 2));
+            return score;
+        }
+
+        private int _STR, _RFX, _CON, _CUN, _PRE, _INT; ////Strength, Reflex, Constitution, //Cunning, //Presence, //Intellect
+        public int STR { get { return this.statModifier(StrengthScore); } }
+        public int RFX { get { return this.statModifier(ReflexScore); } }
+        public int CON { get { return this.statModifier(ConstitutionScore); } }
+        public int CUN { get { return this.statModifier(CunningScore); } }
+        public int PRE { get { return this.statModifier(PresenceScore); } }
+        public int INT { get { return this.statModifier(IntellectScore); } }
+
+
+
 
         //Condition Stats
+        protected int _reputation = 1;
+
         private double stlib = 0.0;   //Libido 0-100
         private double stsen = 1.0;   //Senstivity Multiplyer x0.0
 
         private double lust;    //Lust 
         private double lustMax = 100.0; //Lust Maximun DFLT: 100
 
-        private double hp;      //Hit Points
-        private double hpMax = 100.0;   //Hit Points Maximun
+        private int _hp;      //Hit Points
+        public int HP { get; set; }
+
+        private int _hpMax;   //Hit Points Maximun
+        public int HPmax { get { return _hpMax; } }
+
+        public void calHPMax() {
+            _hpMax = _reputation + (this.CON * _reputation);
+        }
 
         public string getGender()
         {
@@ -79,28 +102,27 @@ namespace MAS.Character
             }
             return t;
         }
-
         public int getAbilityScore(Stat abl) {
             int score = 0;
             switch (abl)
             {
                 case Stat.STR:
-                    score = this.STR;
+                    score = this.StrengthScore;
                     break;
                 case Stat.RFX:
-                    score = this.RFX;
+                    score = this.ReflexScore;
                     break;
                 case Stat.CON:
-                    score = this.CON;
+                    score = this.ConstitutionScore;
                     break;
                 case Stat.CUN:
-                    score = this.CUN;
+                    score = this.CunningScore;
                     break;
                 case Stat.PRE:
-                    score = this.PRE;
+                    score = this.PresenceScore;
                     break;
                 case Stat.INT:
-                    score = this.INT;
+                    score = this.IntellectScore;
                     break;
                 default:
                     score = 0;
@@ -113,22 +135,23 @@ namespace MAS.Character
             switch (abl)
             {
                 case Stat.STR:
-                    STR = num;
+                    this.StrengthScore = num;
                     break;
                 case Stat.RFX:
-                    RFX = num;
+                    this.ReflexScore = num;
                     break;
                 case Stat.CON:
-                    CON = num;
+                    this.ConstitutionScore = num;
+                    calHPMax();
                     break;
                 case Stat.CUN:
-                    CUN = num;
+                    this.CunningScore = num;
                     break;
                 case Stat.PRE:
-                    PRE = num;
+                    this.PresenceScore = num;
                     break;
                 case Stat.INT:
-                    INT = num;
+                    this.IntellectScore = num;
                     break;
             }
         }
@@ -137,22 +160,23 @@ namespace MAS.Character
             switch (abl)
             {
                 case Stat.STR:
-                    STR += num;
+                    this.StrengthScore += num;
                     break;
                 case Stat.RFX:
-                    RFX += num;
+                    this.ReflexScore += num;
                     break;
                 case Stat.CON:
-                    CON += num;
+                    this.ConstitutionScore += num;
+                    calHPMax();
                     break;
                 case Stat.CUN:
-                    CUN += num;
+                    this.CunningScore += num;
                     break;
                 case Stat.PRE:
-                    PRE += num;
+                    this.PresenceScore += num;
                     break;
                 case Stat.INT:
-                    INT += num;
+                    this.IntellectScore += num;
                     break;
             }
         }
@@ -161,30 +185,26 @@ namespace MAS.Character
             switch (abl)
             {
                 case Stat.STR:
-                    STR -= num;
+                    this.StrengthScore -= num;
                     break;
                 case Stat.RFX:
-                    RFX -= num;
+                    this.ReflexScore -= num;
                     break;
                 case Stat.CON:
-                    CON -= num;
+                    this.ConstitutionScore -= num;
+                    calHPMax();
                     break;
                 case Stat.CUN:
-                    CUN -= num;
+                    this.CunningScore -= num;
                     break;
                 case Stat.PRE:
-                    PRE -= num;
+                    this.PresenceScore -= num;
                     break;
                 case Stat.INT:
-                    INT -= num;
+                    this.IntellectScore -= num;
                     break;
             }
         }
-        public int calModifier(int score)
-        {
-            double scoreD = score;
-            score = Convert.ToInt32(Math.Floor((scoreD - 10) / 2));
-            return score;
-        }
+          
     }
 }

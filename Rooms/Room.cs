@@ -76,7 +76,7 @@ namespace MAS.Rooms
         public Button statUpButton(string NameTxt, EventHandler eh, int ablNum)
         {
             Button newButton = new Button();
-            newButton.Size = new Size(Globals.bw/2, Globals.bh/2);
+            newButton.Size = new Size(Globals.bw, Globals.bh/2);
             newButton.TabIndex = 7;
             newButton.Name = ablNum.ToString();
             newButton.Text = "(" + NameTxt + ") +";
@@ -88,7 +88,7 @@ namespace MAS.Rooms
         public Button statDownButton(string NameTxt, EventHandler eh, int ablNum)
         {
             Button newButton = new Button();
-            newButton.Size = new Size(Globals.bw/2, Globals.bh/2);
+            newButton.Size = new Size(Globals.bw, Globals.bh/2);
             newButton.TabIndex = 7;
             newButton.Name = ablNum.ToString();
             newButton.Text = "("+ NameTxt + ") -";

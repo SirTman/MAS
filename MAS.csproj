@@ -49,6 +49,7 @@
     <Compile Include="Character\Body.cs" />
     <Compile Include="Character\Character.cs" />
     <Compile Include="Character\Face.cs" />
+    <Compile Include="Character\NPC\Beruch.cs" />
     <Compile Include="Character\PC\Player.cs" />
     <Compile Include="Character\Sexual\Breasts.cs" />
     <Compile Include="Character\Sexual\Penis.cs" />
@@ -91,7 +92,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Character\NPC\" />
+    <Folder Include="Combat\Actions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

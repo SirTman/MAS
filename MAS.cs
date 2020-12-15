@@ -18,7 +18,6 @@ namespace MAS
 {
     public partial class MAS : Form
     {
-        
         private Room scene;
         public Room Scene
         {
@@ -37,6 +36,7 @@ namespace MAS
                 }
             }
         }
+        //Player
         public Player pc;
         
         public MAS()
@@ -100,42 +100,21 @@ namespace MAS
 
         public void updateStats()
         {
-            string format = "+0;-#;";
-            StrScore.Text = pc.getAbilityScore(Stat.STR) + " (" + pc.calModifier(pc.getAbilityScore(Stat.STR)).ToString(format) + ")";
-            RfxScore.Text = pc.getAbilityScore(Stat.RFX) + " (" + pc.calModifier(pc.getAbilityScore(Stat.RFX)).ToString(format) + ")";
-            ConScore.Text = pc.getAbilityScore(Stat.CON) + " (" + pc.calModifier(pc.getAbilityScore(Stat.CON)).ToString(format) + ")";
-            CunScore.Text = pc.getAbilityScore(Stat.CUN) + " (" + pc.calModifier(pc.getAbilityScore(Stat.CUN)).ToString(format) + ")";
-            PreScore.Text = pc.getAbilityScore(Stat.PRE) + " (" + pc.calModifier(pc.getAbilityScore(Stat.PRE)).ToString(format) + ")";
-            IntScore.Text = pc.getAbilityScore(Stat.INT) + " (" + pc.calModifier(pc.getAbilityScore(Stat.INT)).ToString(format) + ")";
+            StrScore.Text = pc.getAbilityScore(Stat.STR).ToString();
+            RfxScore.Text = pc.getAbilityScore(Stat.RFX).ToString();
+            ConScore.Text = pc.getAbilityScore(Stat.CON).ToString();
+            CunScore.Text = pc.getAbilityScore(Stat.CUN).ToString();
+            PreScore.Text = pc.getAbilityScore(Stat.PRE).ToString();
+            IntScore.Text = pc.getAbilityScore(Stat.INT).ToString();
+        }
+        public void updateHP() {
+            labelHPMax.Text = pc.HPmax.ToString();
+            labelHPCurrent.Text = pc.HP.ToString();
+            hitPointsBar.Maximum = pc.HPmax;
+            hitPointsBar.Value = pc.HP;
+            hitPointsBar.PerformStep();
         }
 
-        //public string nameFieldgen()
-        //{
-        //    clrButtons();
-        //    abLeft();
-        //    bool yes = false;
-
-        //    TextBox NameInput = new TextBox()
-        //    {
-        //        Name = "NameInput",
-        //        TabIndex = 9,
-        //        Size = new Size(362, 49),
-        //        Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)))
-        //    };
-
-        //    abAdd(NameInput);
-
-        //    Button okButton = new Button() { Size = new Size(132, 50), TabIndex = 7, Name = "OK", Text = "Ok", UseVisualStyleBackColor = true };
-        //    okButton.Click += (sender, e) => { yes = true; Scene.skip(1); };
-        //    abAdd(okButton);
-
-        //    //AcceptButton = okButton;
-
-        //    return yes ? NameInput.Text : "";
-        //}
-
-        //START
-        //==================================================================================
         public void returnToWorkshop(object sender, EventArgs e)
         {
             Scene = new Workshop(this);
@@ -147,7 +126,43 @@ namespace MAS
             Scene = new CharacterCreation(this);
         }
 
-        private void ActionBar_ControlAdded(object sender, ControlEventArgs e)
+        private void StrScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            strMod.Text = "(" + pc.STR.ToString(format) + ")";
+        }
+
+        private void RfxScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            rfxMod.Text = "(" + pc.RFX.ToString(format) + ")";
+        }
+
+        private void ConScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            conMod.Text = "(" + pc.CON.ToString(format) + ")";
+        }
+
+        private void CunScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            cunMod.Text = "(" + pc.CUN.ToString(format) + ")";
+        }
+
+        private void PreScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            preMod.Text = "(" + pc.PRE.ToString(format) + ")";
+        }
+
+        private void IntScore_TextChanged(object sender, EventArgs e)
+        {
+            string format = "+0;-#;";
+            intMod.Text = "(" + pc.INT.ToString(format) + ")";
+        }
+
+        private void labelHP_Click(object sender, EventArgs e)
         {
 
         }
